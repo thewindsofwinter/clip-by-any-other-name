@@ -3,17 +3,17 @@ import pytest
 import torch
 from PIL import Image
 
-import clip
+import clipbyanyothername
 
 
-@pytest.mark.parametrize('model_name', clip.available_models())
+@pytest.mark.parametrize('model_name', clipbyanyothername.available_models())
 def test_consistency(model_name):
     device = "cpu"
-    jit_model, transform = clip.load(model_name, device=device, jit=True)
-    py_model, _ = clip.load(model_name, device=device, jit=False)
+    jit_model, transform = clipbyanyothername.load(model_name, device=device, jit=True)
+    py_model, _ = clipbyanyothername.load(model_name, device=device, jit=False)
 
     image = transform(Image.open("CLIP.png")).unsqueeze(0).to(device)
-    text = clip.tokenize(["a diagram", "a dog", "a cat"]).to(device)
+    text = clipbyanyothername.tokenize(["a diagram", "a dog", "a cat"]).to(device)
 
     with torch.no_grad():
         logits_per_image, _ = jit_model(image, text)
