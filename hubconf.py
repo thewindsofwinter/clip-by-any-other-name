@@ -1,4 +1,4 @@
-from clipbyanyothername.clipbyanyothername import tokenize as _tokenize, load as _load, available_models as _available_models
+from clipbyanyothername.clip import tokenize as _tokenize, load as _load, available_models as _available_models
 import re
 import string
 
