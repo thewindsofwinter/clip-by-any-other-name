@@ -1,1 +1,1 @@
-from .clipbyanyothername import *
+from .clip import *
